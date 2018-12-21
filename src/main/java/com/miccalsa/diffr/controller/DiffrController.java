@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.miccalsa.diffr.dto.DiffrResultDto;
 import com.miccalsa.diffr.dto.DiffrSide;
 import com.miccalsa.diffr.dto.ResourceDto;
+import com.miccalsa.diffr.exception.ApiException;
 import com.miccalsa.diffr.service.DiffrService;
 
 @RestController
@@ -38,7 +39,7 @@ public class DiffrController {
     }
 
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity getDiffResults(@PathVariable(value = "id") Integer id) {
+    public ResponseEntity getDiffResults(@PathVariable(value = "id") Integer id) throws ApiException {
         DiffrResultDto resultDto = this.diffrService.getDiffr(id);
         return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }

@@ -1,5 +1,6 @@
 package com.miccalsa.diffr.dto;
 
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,7 +9,7 @@ public class DiffrResultDto {
 
     private String result;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String insights;
+    private List<String> insights;
 
     public DiffrResultDto() {
     }
@@ -21,11 +22,11 @@ public class DiffrResultDto {
         this.result = result;
     }
 
-    public String getInsights() {
+    public List<String> getInsights() {
         return insights;
     }
 
-    public void setInsights(String insights) {
+    public void setInsights(List<String> insights) {
         this.insights = insights;
     }
 
@@ -33,9 +34,9 @@ public class DiffrResultDto {
     public boolean equals(Object o) {
         if (this == o) { return true; }
         if (o == null || getClass() != o.getClass()) { return false; }
-        DiffrResultDto that = (DiffrResultDto) o;
-        return Objects.equals(result, that.result) &&
-            Objects.equals(insights, that.insights);
+        DiffrResultDto resultDto = (DiffrResultDto) o;
+        return Objects.equals(result, resultDto.result) &&
+            Objects.equals(insights, resultDto.insights);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class DiffrResultDto {
     public String toString() {
         return "DiffrResultDto{" +
             "result='" + result + '\'' +
-            ", insights='" + insights + '\'' +
+            ", insights=" + insights +
             '}';
     }
 }
