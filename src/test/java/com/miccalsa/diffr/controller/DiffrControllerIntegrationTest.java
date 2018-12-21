@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.is;
 import java.util.Arrays;
 import java.util.Collections;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class DiffrControllerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
@@ -63,7 +65,7 @@ public class DiffrControllerIntegrationTest {
             post(LEFT_RESOURCE)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(request)
-        ).andExpect(status().isOk());
+        ).andExpect(status().isAccepted());
     }
 
     @Test
@@ -75,7 +77,7 @@ public class DiffrControllerIntegrationTest {
             post(RIGHT_RESOURCE)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(request)
-        ).andExpect(status().isOk());
+        ).andExpect(status().isAccepted());
     }
 
     @Test
